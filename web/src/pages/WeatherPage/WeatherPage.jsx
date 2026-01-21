@@ -1,7 +1,7 @@
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import toast from "react-hot-toast";
+import { useEffect } from "react";
 import DisplayCurrentWeather from "../../components/displayWeather/DisplayCurrentWeather";
-import { fetchWeather } from "../../store/weatherSlice";
 import {
    selectWeatherData,
    selectWeatherStatus,
@@ -15,7 +15,15 @@ const WeatherPage = () => {
    const status = useSelector(selectWeatherStatus);
    const error = useSelector(selectWeatherError);
 
-   console.log("Weather Error:", error);
+   useEffect(() => {
+      if (status === "failed") {
+         error !== " HTTP error 404"
+            ? toast.error("Country/City not found. Please try again.")
+            : toast.error(
+                 "An unexpected error occurred. Please try again later.",
+              );
+      }
+   }, [status, error]);
 
    return (
       <div className="WeatherPage">
@@ -24,13 +32,6 @@ const WeatherPage = () => {
          {status === "loading" && (
             <p className="WeatherStatus">Loading weather...</p>
          )}
-
-         {status === "failed" && (
-            <p className="WeatherError">
-               {"Country/City entered is not found! Please try again!"}
-            </p>
-         )}
-
          <DisplayCurrentWeather weather={weather} />
       </div>
    );

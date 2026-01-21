@@ -9,13 +9,20 @@ import "./SearchBar.css";
 const SearchBar = () => {
    const dispatch = useDispatch();
    const [searchTerm, setSearchTerm] = useState("");
+   const [error, setError] = useState("");
 
    const onChangeHandler = (event) => {
       setSearchTerm(event.target.value);
+      if (error) setError("");
    };
 
    const triggerSearch = () => {
-      if (!searchTerm.trim()) return;
+      if (!searchTerm.trim()) {
+         setError("Please enter a city or country");
+         return;
+      }
+
+      setError("");
 
       dispatch(fetchWeather({ cityCountryName: searchTerm }));
       setSearchTerm("");
@@ -32,20 +39,23 @@ const SearchBar = () => {
    };
 
    return (
-      <div className="SearchBarContainer">
-         <SearchInput
-            value={searchTerm}
-            onChange={onChangeHandler}
-            onKeyDown={onEnterHandler}
-            placeholder="Enter Country / City ..."
-         />
-         <CustomButton
-            onClick={onSearchHandler}
-            icon={faMagnifyingGlass}
-            divClassName="SearchButtonContainer"
-            iconClassName="SearchIcon"
-         />
-      </div>
+      <>
+         <div className="SearchBarContainer">
+            <SearchInput
+               value={searchTerm}
+               onChange={onChangeHandler}
+               onKeyDown={onEnterHandler}
+               placeholder="Enter Country / City ..."
+            />
+            <CustomButton
+               onClick={onSearchHandler}
+               icon={faMagnifyingGlass}
+               divClassName="SearchButtonContainer"
+               iconClassName="SearchIcon"
+            />
+         </div>
+         {error && <p className="SearchBarError">{error}</p>}
+      </>
    );
 };
 

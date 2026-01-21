@@ -25,3 +25,9 @@
    color: white;
    font-size: 30px;
 }
+
+.SearchBarError {
+   color: #a83232;
+   font-size: 28px;
+   margin-top: 6px;
+}
