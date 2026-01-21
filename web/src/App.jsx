@@ -1,7 +1,7 @@
-import React from "react";
+import WeatherPage from "./pages/WeatherPage/WeatherPage";
 
 const App = () => {
-   return <div className="app">Testing</div>;
+   return <WeatherPage />;
 };
 
 export default App;

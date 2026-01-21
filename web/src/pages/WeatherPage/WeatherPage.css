@@ -1,0 +1,22 @@
+.WeatherPage {
+   display: flex;
+   align-items: center;
+   align-self: center;
+   flex-direction: column;
+   width: 100%;
+   min-height: 100%;
+   position: relative;
+   margin: 0;
+   /* overflow: scroll; */
+}
+
+.WeatherPage:before {
+   content: "";
+   background: url("../../assets/bg-light.png") no-repeat center center/cover;
+   position: absolute;
+   width: 100vw;
+   height: 100vh;
+   top: 0;
+   left: 0;
+   z-index: -1;
+}
