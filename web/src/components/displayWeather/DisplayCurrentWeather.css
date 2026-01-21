@@ -1,48 +1,68 @@
 .DisplayCurrentWeather {
-    background-color: rgba(255,255,255,0.2);
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-    padding-bottom: 20px;
-    border-radius: 35px;
-    width: 40rem;
-    min-height: 100%; 
-    margin-top: 110px;
-    margin-bottom: 20px;
+   background-color: rgba(255, 255, 255, 0.2);
+   display: flex;
+   flex-direction: column;
+   padding: 10px;
+   padding-bottom: 20px;
+   border-radius: 40px;
+   width: 700px;
+   min-height: 100%;
+   margin-top: 110px;
+   margin-bottom: 20px;
 }
 
-p{
-    margin: 0;
-    font-size: 18px;
-    font-weight: 400;
-}
-h1{
-    color: #6C40B5;
-    fill: #6C40B5;
-    font-size: 4rem;
-    margin: 0;
-    margin-bottom: 15px;
-}
-.HeaderWeatherInfomation{
-    display: flex;
-    flex-direction: row;
-    align-self: center;
-    justify-content: space-between;
-    width: 90%;
-    height: 180px;
-    margin-bottom: 0;
-
-}
-.localCountryInformationBar{
-    display: flex;
-    flex-direction: row;
-    width: 90%;
-    justify-content: space-between;
-    align-self: center;
-    margin-bottom: 26px;
+.MainTemperature {
+   color: #6c40b5;
+   fill: #6c40b5;
+   font-size: 76px;
+   font-weight: bolder;
 }
 
-.WeatherIcon{
-    height: 250px;
-    transform: translate(-3%, -30%);
+.MainTemperatureHeader {
+   font-family: noto-sans, sans-serif;
+   font-size: 16px;
+   font-weight: 400;
+}
+
+.MaxMinTemperature {
+   font-family: noto-sans, sans-serif;
+   font-size: 16px;
+   font-weight: 400;
+}
+
+.HeaderWeatherInfomation {
+   display: flex;
+   flex-direction: row;
+   align-self: center;
+   justify-content: space-between;
+   width: 600px;
+   height: 180px;
+   margin-bottom: 0;
+}
+
+/* .HeaderWeatherInfomation p {
+   font-family: noto-sans, sans-serif;
+   font-size: 16px;
+   font-weight: 400;
+} */
+
+.localCountryInformationBar {
+   display: flex;
+   flex-direction: row;
+   width: 600px;
+   justify-content: space-between;
+   align-self: center;
+   margin-bottom: 26px;
+}
+
+.localCountryInformationBar p {
+   font-family: noto-sans, sans-serif;
+   font-size: 16px;
+   font-weight: 400;
+   color: #666666;
+}
+
+.WeatherIcon {
+   height: 300px;
+   transform: translate(9%, -34%);
 }

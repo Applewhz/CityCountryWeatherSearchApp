@@ -39,12 +39,19 @@ const weatherSlice = createSlice({
             state.status = "succeeded";
             state.data = action.payload;
 
+            const { city, country, date, time } = action.payload;
+            // Remove existing entry if it already exists
+            state.searchHistory = state.searchHistory.filter(
+               (item) => item.city !== city || item.country !== country,
+            );
+
+            // Add latest search to top
             state.searchHistory.unshift({
                id: crypto.randomUUID(),
-               city: action.payload.city,
-               country: action.payload.country,
-               date: action.payload.date,
-               time: action.payload.time,
+               city,
+               country,
+               date,
+               time,
             });
          })
          .addCase(fetchWeather.rejected, (state, action) => {

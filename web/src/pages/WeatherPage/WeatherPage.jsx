@@ -11,17 +11,11 @@ import SearchBar from "../../components/searchBar/SearchBar";
 import "./WeatherPage.css";
 
 const WeatherPage = () => {
-   const dispatch = useDispatch();
-
    const weather = useSelector(selectWeatherData);
    const status = useSelector(selectWeatherStatus);
    const error = useSelector(selectWeatherError);
 
    console.log("Weather Error:", error);
-
-   useEffect(() => {
-      dispatch(fetchWeather({ cityCountryName: "Singapore" }));
-   }, [dispatch]);
 
    return (
       <div className="WeatherPage">
@@ -37,10 +31,7 @@ const WeatherPage = () => {
             </p>
          )}
 
-         {/* Only render weather when ready */}
-         {status === "succeeded" && weather && (
-            <DisplayCurrentWeather weather={weather} />
-         )}
+         <DisplayCurrentWeather weather={weather} />
       </div>
    );
 };

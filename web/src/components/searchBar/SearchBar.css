@@ -1,16 +1,27 @@
-.SearchButtonContainer{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: #6C40B5;
-    margin-right: 10px;
-    width: 45px;
-    height: 45px;
-    border-radius: 10px;
-    align-self: center;
-    justify-self: center;
+.SearchBarContainer {
+   display: flex;
+   flex-direction: row;
+   width: 700px;
+   height: 60px;
+   margin-top: 26px;
 }
 
-.SearchIcon{
-    color: white;
+.SearchButtonContainer {
+   width: 60px;
+   height: 60px;
+   border-radius: 16px;
+   background-color: #6c40b5;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-content: center;
+   justify-items: center;
+   align-items: center;
+   align-self: center;
+   justify-self: center;
+}
+
+.SearchIcon {
+   color: white;
+   font-size: 30px;
 }

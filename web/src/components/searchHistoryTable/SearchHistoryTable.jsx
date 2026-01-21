@@ -9,7 +9,7 @@ const SearchHistoryTable = () => {
    if (!searchHistory.length) {
       return (
          <div className="SearchHistoryOverview">
-            <h4>Search History</h4>
+            <p className="SearchHistoryHeader">Search History</p>
             <h2>Your Search History is Empty</h2>
          </div>
       );
@@ -17,7 +17,7 @@ const SearchHistoryTable = () => {
 
    return (
       <div className="SearchHistoryOverview">
-         <h4>Search History</h4>
+         <p className="SearchHistoryHeader">Search History</p>
          {searchHistory.map((item) => (
             <HistoryCard
                key={item.id}

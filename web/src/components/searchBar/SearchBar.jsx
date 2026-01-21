@@ -32,7 +32,7 @@ const SearchBar = () => {
    };
 
    return (
-      <div style={{ display: "flex", flexDirection: "row" }}>
+      <div className="SearchBarContainer">
          <SearchInput
             value={searchTerm}
             onChange={onChangeHandler}

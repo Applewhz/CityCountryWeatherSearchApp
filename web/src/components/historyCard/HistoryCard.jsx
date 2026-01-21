@@ -19,13 +19,13 @@ export const HistoryCard = ({ id, city, country, date, time }) => {
 
    return (
       <div className="HistoryCard">
-         <p style={{ marginRight: "10px" }}>
+         <p>
             {city}, {country}
          </p>
 
          <div className="HistoryCardRightSide">
-            <p style={{ marginRight: "10px" }}>{date}</p>
-            <p style={{ marginRight: "10px" }}>{time}</p>
+            <p>{date}</p>
+            <p>{time}</p>
 
             <CustomButton
                onClick={onSearchHandler}
