@@ -7,6 +7,7 @@ import {
    selectWeatherStatus,
    selectWeatherError,
 } from "../../store/weatherSlice";
+import SearchBar from "../../components/searchBar/SearchBar";
 import "./WeatherPage.css";
 
 const WeatherPage = () => {
@@ -14,23 +15,30 @@ const WeatherPage = () => {
 
    const weather = useSelector(selectWeatherData);
    const status = useSelector(selectWeatherStatus);
-   const error = useSelector(selectWeatherError);
+   //    const error = useSelector(selectWeatherError);
 
    useEffect(() => {
       dispatch(fetchWeather({ cityCountryName: "Singapore" }));
    }, [dispatch]);
 
-   if (status === "loading") return <p>Loading weather...</p>;
-   if (status === "failed")
-      return (
-         <p style={{ color: "maroon" }}>
-            {error || "Country/City entered is not found! Please try again!"}
-         </p>
-      );
-
    return (
       <div className="WeatherPage">
-         <DisplayCurrentWeather weather={weather} />
+         <SearchBar />
+         {/* Status messages */}
+         {status === "loading" && (
+            <p className="WeatherStatus">Loading weather...</p>
+         )}
+
+         {status === "failed" && (
+            <p className="WeatherError">
+               {"Country/City entered is not found! Please try again!"}
+            </p>
+         )}
+
+         {/* Only render weather when ready */}
+         {status === "succeeded" && weather && (
+            <DisplayCurrentWeather weather={weather} />
+         )}
       </div>
    );
 };

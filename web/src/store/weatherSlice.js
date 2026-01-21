@@ -1,11 +1,13 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { getCurrentWeather } from "../../../shared/api/weather";
+import { formatWeatherResponse } from "../../../shared/util/formatWeatherResponse";
 
 export const fetchWeather = createAsyncThunk(
    "weather/fetchWeather",
    async ({ cityCountryName }, { rejectWithValue }) => {
       try {
-         return await getCurrentWeather(cityCountryName);
+         const response = await getCurrentWeather(cityCountryName);
+         return formatWeatherResponse(response);
       } catch (err) {
          return rejectWithValue(err.message);
       }
