@@ -1,5 +1,5 @@
 .DisplayCurrentWeather {
-   background-color: rgba(255, 255, 255, 0.2);
+   background-color: var(--background-display-weather-container);
    display: flex;
    flex-direction: column;
    padding: 10px;
@@ -12,8 +12,8 @@
 }
 
 .MainTemperature {
-   color: #6c40b5;
-   fill: #6c40b5;
+   color: var(--main-temperature);
+   fill: var(--main-temperature);
    font-size: 76px;
    font-weight: bolder;
 }
@@ -22,12 +22,14 @@
    font-family: noto-sans, sans-serif;
    font-size: 16px;
    font-weight: 400;
+   color: var(--text);
 }
 
 .MaxMinTemperature {
    font-family: noto-sans, sans-serif;
    font-size: 16px;
    font-weight: 400;
+   color: var(--text);
 }
 
 .HeaderWeatherInfomation {
@@ -39,12 +41,6 @@
    height: 180px;
    margin-bottom: 0;
 }
-
-/* .HeaderWeatherInfomation p {
-   font-family: noto-sans, sans-serif;
-   font-size: 16px;
-   font-weight: 400;
-} */
 
 .localCountryInformationBar {
    display: flex;
@@ -59,7 +55,7 @@
    font-family: noto-sans, sans-serif;
    font-size: 16px;
    font-weight: 400;
-   color: #666666;
+   color: var(--local-temperature);
 }
 
 .WeatherIcon {

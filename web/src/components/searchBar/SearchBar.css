@@ -10,7 +10,7 @@
    width: 60px;
    height: 60px;
    border-radius: 16px;
-   background-color: #6c40b5;
+   background-color: var(--background-search-icon-container);
    display: flex;
    flex-direction: column;
    justify-content: center;
@@ -27,7 +27,7 @@
 }
 
 .SearchBarError {
-   color: #a83232;
+   color: var(--error-empty-search-bar);
    font-size: 28px;
    margin-top: 6px;
 }

@@ -1,0 +1,28 @@
+/* Light theme (default) */
+:root {
+   --background-image: url("../src/assets/bg-light.png");
+   --text: black;
+   --main-temperature: #6c40b5;
+   --local-temperature: #666666;
+   --background-search-icon-container: #6c40b5;
+   --error-empty-search-bar: #a83232;
+   --background-search-input-container: rgba(255, 255, 255, 0.4);
+   --background-search-input-placeholder: #00000066;
+   --background-search-history-container: rgba(255, 255, 255, 0.2);
+   --background-display-weather-container: rgba(255, 255, 255, 0.2);
+   --background-card-icon-container: white;
+}
+/* Dark theme */
+[data-theme="dark"] {
+   --background-image: url("../src/assets/bg-dark.png");
+   --text: white;
+   --main-temperature: white;
+   --local-temperature: white;
+   --background-search-icon-container: #28124d;
+   --error-empty-search-bar: #ea7d7d;
+   --background-search-input-container: rgba(26, 26, 26, 0.5);
+   --background-search-input-placeholder: white;
+   --background-search-history-container: rgba(26, 26, 26, 0.3);
+   --background-display-weather-container: rgba(26, 26, 26, 0.3);
+   --background-card-icon-container: white;
+}
