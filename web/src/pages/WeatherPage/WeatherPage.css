@@ -7,12 +7,10 @@
    min-height: 100vh;
    position: relative;
    margin: 0;
-   /* overflow: scroll; */
 }
 
 .WeatherPage:before {
    content: "";
-   /* background: url("../../assets/bg-light.png") no-repeat center center/cover; */
    background-image: var(--background-image);
    background-repeat: no-repeat;
    background-position: center;

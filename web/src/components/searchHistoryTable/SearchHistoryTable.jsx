@@ -10,7 +10,6 @@ const SearchHistoryTable = () => {
       return (
          <div className="SearchHistoryOverview">
             <p className="SearchHistoryHeader">Search History</p>
-            <h2>Your Search History is Empty</h2>
          </div>
       );
    }

@@ -1,0 +1,15 @@
+**Assumptions**
+
+1. Search History will show latest in search history
+
+- Each Search of the same country/city will update the history and be placed on top
+
+2. Full Search History was intentionally omitted due to time constraint
+3. Only current weather is shown (not hourly or 7-day forecast).
+4. Search history is stored locally on the device
+
+- Refreshing will result in clear/defaulted state
+
+5. The app UI is English-only.
+6. City/Country search is handled via a single input field that accepts `City` or `Country`
+7. City/Country search autocomplete was intentionally omitted due to the complexity of sourcing and time constraint.

@@ -4,7 +4,6 @@ import sunImage from "../../assets/sun.png";
 import SearchHistoryTable from "../searchHistoryTable/SearchHistoryTable";
 
 const DisplayCurrentWeather = ({ weather }) => {
-   console.log(weather);
    return (
       <div className="DisplayCurrentWeather">
          <div className="HeaderWeatherInfomation">
@@ -43,7 +42,6 @@ const DisplayCurrentWeather = ({ weather }) => {
             </div>
          )}
 
-         {/* SearchHistoryTable will come later */}
          <SearchHistoryTable />
       </div>
    );
