@@ -20,8 +20,15 @@ const weatherSlice = createSlice({
       data: null,
       status: "idle", // idle | loading | succeeded | failed
       error: null,
+      searchHistory: [],
    },
-   reducers: {},
+   reducers: {
+      removeHistoryItem: (state, action) => {
+         state.searchHistory = state.searchHistory.filter(
+            (item) => item.id !== action.payload,
+         );
+      },
+   },
    extraReducers: (builder) => {
       builder
          .addCase(fetchWeather.pending, (state) => {
@@ -31,6 +38,14 @@ const weatherSlice = createSlice({
          .addCase(fetchWeather.fulfilled, (state, action) => {
             state.status = "succeeded";
             state.data = action.payload;
+
+            state.searchHistory.unshift({
+               id: crypto.randomUUID(),
+               city: action.payload.city,
+               country: action.payload.country,
+               date: action.payload.date,
+               time: action.payload.time,
+            });
          })
          .addCase(fetchWeather.rejected, (state, action) => {
             state.status = "failed";
@@ -38,7 +53,10 @@ const weatherSlice = createSlice({
          });
    },
 });
+export const { removeHistoryItem } = weatherSlice.actions;
 export const selectWeatherData = (state) => state.weather.data;
 export const selectWeatherStatus = (state) => state.weather.status;
 export const selectWeatherError = (state) => state.weather.error;
+export const selectSearchHistory = (state) => state.weather.searchHistory;
+
 export default weatherSlice.reducer;

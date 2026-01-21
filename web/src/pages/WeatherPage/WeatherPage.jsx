@@ -15,7 +15,9 @@ const WeatherPage = () => {
 
    const weather = useSelector(selectWeatherData);
    const status = useSelector(selectWeatherStatus);
-   //    const error = useSelector(selectWeatherError);
+   const error = useSelector(selectWeatherError);
+
+   console.log("Weather Error:", error);
 
    useEffect(() => {
       dispatch(fetchWeather({ cityCountryName: "Singapore" }));

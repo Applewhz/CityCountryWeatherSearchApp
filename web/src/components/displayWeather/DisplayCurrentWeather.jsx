@@ -2,6 +2,7 @@ import "./DisplayCurrentWeather.css";
 import { useEffect, useState } from "react";
 import cloudImage from "../../assets/cloud.png";
 import sunImage from "../../assets/sun.png";
+import SearchHistoryTable from "../searchHistoryTable/SearchHistoryTable";
 
 const DisplayCurrentWeather = ({ weather }) => {
    if (!weather) return null;
@@ -38,7 +39,7 @@ const DisplayCurrentWeather = ({ weather }) => {
          </div>
 
          {/* SearchHistoryTable will come later */}
-         {/* <SearchHistoryTable /> */}
+         <SearchHistoryTable />
       </div>
    );
 };
