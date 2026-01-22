@@ -5,7 +5,12 @@ import MainWeatherInformationCard from "@/components/MainWeatherInformationCard"
 import { getCurrentWeather } from "../../shared/api/weather";
 import { useEffect, useState } from "react";
 import { formatWeatherResponse } from "../../shared/util/formatWeatherResponse";
-import { FormattedWeather } from "@/types/weather";
+import { FormattedWeather, WeatherHistoryItem } from "@/types/weather";
+import SearchHistory from "@/components/SearchHistory";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
+const generateId = () =>
+   `${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
 
 const HomeScreen = () => {
    const colorScheme = useColorScheme();
@@ -17,8 +22,19 @@ const HomeScreen = () => {
    const [weather, setWeather] = useState<FormattedWeather | null | undefined>(
       null,
    );
+   const [history, setHistory] = useState<WeatherHistoryItem[]>([]);
    const [loading, setLoading] = useState(false);
    const [error, setError] = useState<string | null>(null);
+
+   useEffect(() => {
+      AsyncStorage.getItem("weather_history").then((value) => {
+         if (value) setHistory(JSON.parse(value));
+      });
+   }, []);
+
+   useEffect(() => {
+      AsyncStorage.setItem("weather_history", JSON.stringify(history));
+   }, [history]);
 
    useEffect(() => {
       getCurrentWeather("Singapore")
@@ -33,13 +49,36 @@ const HomeScreen = () => {
          setError(null);
 
          const data = await getCurrentWeather(query);
-         setWeather(formatWeatherResponse(data));
-      } catch (e) {
+         const formatted = formatWeatherResponse(data);
+
+         setWeather(formatted);
+
+         const historyItem = {
+            id: generateId(),
+            city: formatted.city,
+            country: formatted.country,
+            date: formatted.date,
+            time: formatted.time,
+         };
+
+         setHistory((prev) => {
+            // remove existing entry for same city + country
+            const filtered = prev.filter(
+               (item) =>
+                  item.city !== historyItem.city ||
+                  item.country !== historyItem.country,
+            );
+
+            // add latest search to the top
+            return [historyItem, ...filtered];
+         });
+      } catch {
          setError("Country / City not found");
       } finally {
          setLoading(false);
       }
    };
+
    return (
       <ImageBackground source={bg} style={styles.container}>
          <View style={styles.content}>
@@ -48,8 +87,12 @@ const HomeScreen = () => {
                weather={weather}
                loading={loading}
                error={error}
+               history={history}
+               onSearch={fetchWeather}
+               onDelete={(id) =>
+                  setHistory((prev) => prev.filter((item) => item.id !== id))
+               }
             />
-            {/* SearchHistory (next) */}
          </View>
       </ImageBackground>
    );

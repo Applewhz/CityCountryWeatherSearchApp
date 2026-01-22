@@ -9,3 +9,11 @@ export type FormattedWeather = {
    tempMin: number;
    tempMax: number;
 };
+
+export type WeatherHistoryItem = {
+   id: string;
+   city: string;
+   country: string;
+   date: string;
+   time: string;
+};
