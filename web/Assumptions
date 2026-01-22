@@ -13,3 +13,4 @@
 5. The app UI is English-only.
 6. City/Country search is handled via a single input field that accepts `City` or `Country`
 7. City/Country search autocomplete was intentionally omitted due to the complexity of sourcing and time constraint.
+8. Mobile version was done using Expo Go on physical device ( Iphone 16 )
