@@ -1,16 +1,148 @@
-# React + Vite
+# City / Country Weather Search Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+This project is a cross-platform weather application consisting of a **web client** and a **mobile client**.  
+It allows users to search for current weather information by city or country, view detailed conditions, and access their search history.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The application was built with a focus on:
 
-## React Compiler
+- Clean and readable code
+- Reusability across platforms
+- Consistent data handling
+- Maintainable architecture
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Supported Platforms
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Web (React)
+- Mobile (React Native with Expo)
+
+---
+
+## Core Features
+
+- Search weather by city or country
+- Display current temperature, high and low temperatures
+- Display humidity, date, and time
+- Persistent search history
+- Re-search or delete previous searches
+- Light and dark theme support
+- Shared API and data-formatting logic between web and mobile
+
+---
+
+## Technology Stack
+
+### Web
+
+- React
+- Redux Toolkit
+- JavaScript
+- OpenWeather API
+
+### Mobile
+
+- React Native
+- Expo
+- TypeScript
+- AsyncStorage
+
+### Shared
+
+- OpenWeather API
+- Shared utility functions for data formatting
+
+---
+
+## Project Structure
+
+# City / Country Weather Search Application
+
+## Overview
+
+This project is a cross-platform weather application consisting of a **web client** and a **mobile client**.  
+It allows users to search for current weather information by city or country, view detailed conditions, and access their search history.
+
+The application was built with a focus on:
+
+- Clean and readable code
+- Reusability across platforms
+- Consistent data handling
+- Maintainable architecture
+
+---
+
+## Supported Platforms
+
+- Web (React)
+- Mobile (React Native with Expo)
+
+---
+
+## Core Features
+
+- Search weather by city or country
+- Display current temperature, high and low temperatures
+- Display humidity, date, and time
+- Persistent search history
+- Re-search or delete previous searches
+- Light and dark theme support ( Web Only )
+- Shared API and data-formatting logic between web and mobile
+
+---
+
+## Technology Stack
+
+### Web
+
+- React
+- Redux Toolkit
+- JavaScript
+- OpenWeather API
+
+### Mobile
+
+- React Native
+- Expo
+- TypeScript
+- AsyncStorage
+
+### Shared
+
+- OpenWeather API
+- Shared utility functions for data formatting
+
+---
+
+## Project Structure
+
+/web - React web application
+/mobile - React Native (Expo) mobile application
+/shared - Shared API and utility logic
+
+### API Key Configuration
+
+An OpenWeather API key is required.
+
+Ensure the API key is configured correctly for both:
+
+- Web environment
+- Mobile (Expo) environment
+
+---
+
+### Running the Web Application
+
+---bash
+cd web
+npm install
+npm run dev
+
+### Running the Web Application
+
+---bash
+cd mobile
+npm install
+npm run start
