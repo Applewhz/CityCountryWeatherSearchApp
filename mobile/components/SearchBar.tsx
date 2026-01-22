@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
    container: {
       flexDirection: "row",
       alignItems: "center",
-      marginBottom: 20,
+      marginVertical: 20,
    },
    input: {
       flex: 1,

@@ -1,25 +1,22 @@
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
-type Props = {
+type HistoryItem = {
    id: string;
    city: string;
    country: string;
    date: string;
    time: string;
+};
+
+type Props = {
+   item: HistoryItem;
    onSearch: (query: string) => void;
    onDelete: (id: string) => void;
 };
 
-const HistoryCard = ({
-   id,
-   city,
-   country,
-   date,
-   time,
-   onSearch,
-   onDelete,
-}: Props) => {
+const HistoryCard = ({ item, onSearch, onDelete }: Props) => {
+   const { id, city, country, date, time } = item;
    return (
       <View style={styles.card}>
          <View style={styles.left}>
@@ -44,7 +41,7 @@ const HistoryCard = ({
                onPress={() => onDelete(id)}
                style={styles.iconBtn}
             >
-               <Ionicons name="trash" size={18} color="#cc3333" />
+               <Ionicons name="trash" size={18} color="#333" />
             </TouchableOpacity>
          </View>
       </View>
@@ -58,7 +55,7 @@ const styles = StyleSheet.create({
       flexDirection: "row",
       justifyContent: "space-between",
       alignItems: "center",
-      backgroundColor: "rgba(255,255,255,0.6)",
+      backgroundColor: "rgba(255,255,255,0.5)",
       borderRadius: 16,
       paddingHorizontal: 16,
       paddingVertical: 12,
@@ -86,6 +83,12 @@ const styles = StyleSheet.create({
       color: "#555",
    },
    iconBtn: {
+      backgroundColor: "white",
+      height: 35,
+      width: 35,
+      borderRadius: 20,
+      alignItems: "center",
+      justifyContent: "center",
       marginLeft: 8,
    },
 });

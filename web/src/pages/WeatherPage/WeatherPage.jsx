@@ -28,7 +28,6 @@ const WeatherPage = () => {
    return (
       <div className="WeatherPage">
          <SearchBar />
-         {/* Status messages */}
          {status === "loading" && (
             <p className="WeatherStatus">Loading weather...</p>
          )}

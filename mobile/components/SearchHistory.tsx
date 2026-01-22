@@ -1,4 +1,4 @@
-import { View, Text, FlatList, StyleSheet } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import HistoryCard from "./HistoryCard";
 
 type Props = {
@@ -14,13 +14,14 @@ const SearchHistory = ({ history, onSearch, onDelete }: Props) => {
 
    return (
       <View>
-         <FlatList
-            data={history}
-            keyExtractor={(item) => item.id}
-            renderItem={({ item }) => (
-               <HistoryCard {...item} onSearch={onSearch} onDelete={onDelete} />
-            )}
-         />
+         {history.map((item) => (
+            <HistoryCard
+               key={item.id}
+               item={item}
+               onSearch={onSearch}
+               onDelete={onDelete}
+            />
+         ))}
       </View>
    );
 };

@@ -1,4 +1,10 @@
-import { View, StyleSheet, ImageBackground } from "react-native";
+import {
+   ScrollView,
+   StyleSheet,
+   ImageBackground,
+   View,
+   Text,
+} from "react-native";
 import { useColorScheme } from "@/hooks/use-color-scheme";
 import SearchBar from "@/components/SearchBar";
 import MainWeatherInformationCard from "@/components/MainWeatherInformationCard";
@@ -6,7 +12,6 @@ import { getCurrentWeather } from "../../shared/api/weather";
 import { useEffect, useState } from "react";
 import { formatWeatherResponse } from "../../shared/util/formatWeatherResponse";
 import { FormattedWeather, WeatherHistoryItem } from "@/types/weather";
-import SearchHistory from "@/components/SearchHistory";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const generateId = () =>
@@ -36,13 +41,6 @@ const HomeScreen = () => {
       AsyncStorage.setItem("weather_history", JSON.stringify(history));
    }, [history]);
 
-   useEffect(() => {
-      getCurrentWeather("Singapore")
-         .then((res) => setWeather(formatWeatherResponse(res)))
-         .catch(setError)
-         .finally(() => setLoading(false));
-   }, []);
-
    const fetchWeather = async (query: string) => {
       try {
          setLoading(true);
@@ -62,18 +60,15 @@ const HomeScreen = () => {
          };
 
          setHistory((prev) => {
-            // remove existing entry for same city + country
             const filtered = prev.filter(
                (item) =>
                   item.city !== historyItem.city ||
                   item.country !== historyItem.country,
             );
-
-            // add latest search to the top
             return [historyItem, ...filtered];
          });
       } catch {
-         setError("Country / City not found");
+         setError("Country/City not found. Please try again.");
       } finally {
          setLoading(false);
       }
@@ -81,19 +76,31 @@ const HomeScreen = () => {
 
    return (
       <ImageBackground source={bg} style={styles.container}>
-         <View style={styles.content}>
+         <ScrollView
+            contentContainerStyle={styles.content}
+            showsVerticalScrollIndicator={false}
+         >
             <SearchBar onSearch={fetchWeather} />
+            {loading && (
+               <View style={styles.container}>
+                  <Text style={styles.statusText}>Loading weather…</Text>
+               </View>
+            )}
+            {!loading && error && (
+               <View style={styles.container}>
+                  <Text style={styles.errorText}>{error}</Text>
+               </View>
+            )}
+
             <MainWeatherInformationCard
                weather={weather}
-               loading={loading}
-               error={error}
                history={history}
                onSearch={fetchWeather}
                onDelete={(id) =>
                   setHistory((prev) => prev.filter((item) => item.id !== id))
                }
             />
-         </View>
+         </ScrollView>
       </ImageBackground>
    );
 };
@@ -104,8 +111,17 @@ const styles = StyleSheet.create({
       flex: 1,
    },
    content: {
-      flex: 1,
       paddingHorizontal: 20,
       paddingTop: 60,
+      paddingBottom: 40,
+   },
+   statusText: {
+      textAlign: "center",
+      opacity: 0.7,
+   },
+
+   errorText: {
+      textAlign: "center",
+      color: "#d33",
    },
 });
